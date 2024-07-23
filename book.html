@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./favicon-32x32.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title> Bookings - StayEZ</title>
+    <style>
+        .banner {
+            background-image: url('https://www.tripsavvy.com/thmb/qTRUo4Z1EChWFxO8FjpCz2Ka3SA=/1500x999/filters:fill(auto,1)/FSPM-room-interior-56a4c1193df78cf772842d50.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+        }
+                 /* Additional custom styles if needed */
+                 .icon {
+                    font-size: 1.25rem;
+                    color: #4A5568; /* Gray color */
+                }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header>
+        <nav class="bg-white shadow-md">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center space-x-3">
+                        <img src="./logo.jpg" alt="Logo" class="h-10 w-10">
+                        <span class="font-bold text-gray-800 text-xl">StayEZ</span>
+                    </a>
+                </div>
+                <!-- Desktop Navbar -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="./home.html" class="py-2 px-4 text-gray-600  hover:text-blue-600 transition duration-300">Home</a>
+                    <a href="./room.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Rooms</a>
+                    <a href="./amenities.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Amenities</a>
+                    <a href="./book.html" class="py-2 px-4 text-gray-600 border-b-4 border-blue-500 font-semibold">Booking</a>
+                    <a href="./contact.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Contact Us</a>
+                    <a href="./dashboard.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Dashboard</a>
+                </div>
+                <!-- Auth Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="./login.html" class="py-2 px-4 font-medium text-white bg-blue-500 rounded hover:bg-blue-600 transition duration-300">Log Out</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden flex items-center p-2 text-gray-600 hover:text-blue-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu hidden md:hidden">
+            <ul class="flex flex-col space-y-2 p-4">
+                <li><a href="./home.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Home</a></li>
+                <li><a href="./room.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Rooms</a></li>
+                <li><a href="./amenities.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Amenities</a></li>
+                <li><a href="./book.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Booking</a></li>
+                <li><a href="./contact.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Contact Us</a></li>
+                <li><a href="./dashboard.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Dashboard</a></li>
+                <li><a href="./login.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Log Out</a></li>
+            </ul>
+        </div>
+            <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            menuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+    </header>
+    <main class="flex-grow">
+        <section class="banner bg-blue-800 py-16">
+            <div class="banner-content text-white text-center px-4">
+                <h1 class="text-5xl font-bold mb-4">Welcome to StayEZ</h1>
+                <p class="text-xl">Book your perfect stay with us!</p>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 my-8">
+        <h1 class="text-3xl font-bold mb-4">Confirm Your Booking</h1>
+        
+        <div id="booking-summary" class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <!-- Booking summary will be dynamically inserted here -->
+        </div>
+  <!-- Booking Form -->
+  <form id="booking-form" class="bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">Customer Details</h2>
+    <div class="mb-4">
+        <label for="name" class=" text-gray-700 mb-2 font-medium flex items-center">
+            <i class="fas fa-user icon mr-2"></i>
+            Full Name:
+        </label>
+        <input type="text" id="name" name="name" class="border border-gray-300 rounded-lg p-2 w-full focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required>
+    </div>
+    <div class="mb-4">
+        <label for="email" class=" text-gray-700 mb-2 font-medium flex items-center">
+            <i class="fas fa-envelope icon mr-2"></i>
+            Email:
+        </label>
+        <input type="email" id="email" name="email" class="border border-gray-300 rounded-lg p-2 w-full focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required>
+    </div>
+    <div class="mb-4">
+        <label for="phone" class=" text-gray-700 mb-2 font-medium flex items-center">
+            <i class="fas fa-phone icon mr-2"></i>
+            Phone Number:
+        </label>
+        <input type="tel" id="phone" name="phone" class="border border-gray-300 rounded-lg p-2 w-full focus:border-blue-500 focus:ring-1 focus:ring-blue-500" required>
+    </div>
+    <div class="mb-4">
+        <label for="payment" class=" text-gray-700 mb-2 font-medium flex items-center">
+            <i class="fas fa-credit-card icon mr-2"></i>
+            Payment Details:
+        </label>
+        <input type="text" id="payment" name="payment" placeholder="Credit Card Number" class="border border-gray-300 rounded-lg p-2 w-full focus:border-blue-500 focus:ring-1 focus:ring-blue-500" value="1234 5678 9012 3456" required>
+    </div>
+    <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Confirm Booking</button>
+</form>
+    </main>
+    <script>
+        // Function to get query parameters
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                roomId: params.get('roomId'),
+                destination: params.get('destination'),
+                checkin: params.get('checkin'),
+                checkout: params.get('checkout'),
+                adults: params.get('adults'),
+                children: params.get('children')
+            };
+        }
+
+        // Dummy room data
+        const rooms = [
+            { id: 1, name: "Hotel One", price: "$100", description: "Comfortable room with great amenities.", type: "Single" },
+            { id: 2, name: "Hotel Two", price: "$150", description: "Luxurious room with a city view.", type: "Deluxe" },
+            { id: 3, name: "Hotel Three", price: "$200", description: "Premium room with exclusive features.", type: "Family" },
+            { id: 4, name: "Hotel Four", price: "$120", description: "Cozy room perfect for a relaxing stay.", type: "Single" },
+            { id: 5, name: "Hotel Five", price: "$180", description: "Spacious room with modern decor.", type: "Family" },
+        ];
+
+        // Function to display booking details
+        function displayBookingDetails() {
+            const { roomId, destination, checkin, checkout, adults, children } = getQueryParams();
+            const bookingSummary = document.getElementById('booking-summary');
+
+            // Find room details based on roomId
+            const room = rooms.find(r => r.id == roomId);
+
+            if (room) {
+                bookingSummary.innerHTML = `
+                    <h2 class="text-2xl font-bold mb-4">Booking Summary</h2>
+                    <p><strong>Destination:</strong> ${destination}</p>
+                    <p><strong>Check-in Date:</strong> ${checkin}</p>
+                    <p><strong>Check-out Date:</strong> ${checkout}</p>
+                    <p><strong>Adults:</strong> ${adults}</p>
+                    <p><strong>Children:</strong> ${children}</p>
+                    <h3 class="text-xl font-semibold mt-4">Room Details</h3>
+                    <p><strong>Room Type:</strong> ${room.type}</p>
+                    <p><strong>Room Name:</strong> ${room.name}</p>
+                    <p><strong>Price:</strong> ${room.price}</p>
+                    <p><strong>Description:</strong> ${room.description}</p>
+                `;
+            } else {
+                bookingSummary.innerHTML = '<p>Room not found.</p>';
+            }
+        }
+
+        // Function to handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const { roomId, destination, checkin, checkout, adults, children } = getQueryParams();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const payment = document.getElementById('payment').value;
+
+            const bookingDetails = {
+                roomId, destination, checkin, checkout, adults, children, name, email, phone, payment
+            };
+
+            // Store booking details in local storage
+            const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+            bookings.push(bookingDetails);
+            localStorage.setItem('bookings', JSON.stringify(bookings));
+
+            // Redirect to dashboard
+            window.location.href = 'mybookings.html';
+        }
+
+        // Display booking details on page load
+        document.addEventListener('DOMContentLoaded', displayBookingDetails);
+
+        // Add form submit event listener
+        document.getElementById('booking-form').addEventListener('submit', handleFormSubmit);
+
+        // Function to change font
+function changeFont(fontFamily) {
+    const summary = document.getElementById('booking-summary');
+    summary.style.fontFamily = fontFamily;
+}
+
+// Example usage
+changeFont('Arial, sans-serif'); // Change to your desired font
+
+    </script>
+    
+        
+</body>
+</html>
+

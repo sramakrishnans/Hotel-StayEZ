@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./favicon-32x32.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Home - StayEZ</title>
+    <!--<style>
+        .banner {
+            background-image: url('https://www.tripsavvy.com/thmb/qTRUo4Z1EChWFxO8FjpCz2Ka3SA=/1500x999/filters:fill(auto,1)/FSPM-room-interior-56a4c1193df78cf772842d50.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>-->
+</head>
+<body class="bg-gray-100">
+    <header>
+        <nav class="bg-white shadow-md">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center space-x-3">
+                        <img src="./logo.jpg" alt="Logo" class="h-10 w-10">
+                        <span class="font-bold text-gray-800 text-xl">StayEZ</span>
+                    </a>
+                </div>
+                <!-- Desktop Navbar -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="./home.html" class="py-2 px-4 text-gray-600 border-b-4 border-blue-500 font-semibold">Home</a>
+                    <a href="./room.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Rooms</a>
+                    <a href="./amenities.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Amenities</a>
+                    <a href="./book.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Booking</a>
+                    <a href="./contact.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Contact Us</a>
+                    <a href="./dashboard.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Dashboard</a>
+                </div>
+                <!-- Auth Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="./login.html" class="py-2 px-4 font-medium text-white bg-blue-500 rounded hover:bg-blue-600 transition duration-300">Log Out</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden flex items-center p-2 text-gray-600 hover:text-blue-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu hidden md:hidden">
+            <ul class="flex flex-col space-y-2 p-4">
+                <li><a href="./home.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Home</a></li>
+                <li><a href="./room.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Rooms</a></li>
+                <li><a href="./amenities.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Amenities</a></li>
+                <li><a href="./book.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Booking</a></li>
+                <li><a href="./contact.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Contact Us</a></li>
+                <li><a href="./dashboard.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Dashboard</a></li>
+                <li><a href="./login.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Log Out</a></li>
+            </ul>
+        </div>
+        <!-- JavaScript for Mobile Menu Toggle -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const menuButton = document.getElementById('mobileMenuButton');
+                const mobileMenu = document.getElementById('mobileMenu');
+    
+                menuButton.addEventListener('click', function () {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            });
+        </script>
+    </header>
+
+    <!-- Main Content -->
+    <!--<main class="flex-grow">
+        <section class="banner">
+            <div class="banner-content text-white text-center">
+                <h1 class="text-4xl font-bold mb-2">Welcome to StayEZ</h1>
+                <p class="text-lg">Book your perfect stay with us!</p>
+            </div>
+        </section>
+    </main>-->
+      <!-- Main Content -->
+   <!-- Main Content -->
+   <main class="flex-grow">
+    <!-- Banner Section -->
+    <section class="banner bg-cover bg-center h-64 flex items-center justify-center text-white" style="background-image: url('https://www.tripsavvy.com/thmb/qTRUo4Z1EChWFxO8FjpCz2Ka3SA=/1500x999/filters:fill(auto,1)/FSPM-room-interior-56a4c1193df78cf772842d50.jpg');">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold mb-2">Welcome to StayEZ</h1>
+            <p class="text-lg">Book your perfect stay with us!</p>
+        </div>
+    </section>
+
+    <!-- Search Form -->
+    <section class="search my-8">
+        <div class="container  mx-auto px-4">
+            <form action="room.html" method="get" class="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center">
+                <input type="text" name="destination" placeholder="Destination" class="border border-gray-300 rounded-lg p-2 mb-4 md:mb-0 md:mr-4 flex-grow" required>
+                <input type="date" name="checkin" placeholder="Check-in Date" class="border border-gray-300 rounded-lg p-2 mb-4 md:mb-0 md:mr-4 flex-grow" required>
+                <input type="date" name="checkout" placeholder="Check-out Date" class="border border-gray-300 rounded-lg p-2 mb-4 md:mb-0 md:mr-4 flex-grow" required>
+                <input type="number" name="adults" placeholder="Adults" class="border border-gray-300 rounded-lg p-2 mb-4 md:mb-0 md:mr-4 flex-grow" min="1" required>
+                <input type="number" name="children" placeholder="Children" class="border border-gray-300 rounded-lg p-2 mb-4 md:mb-0 md:mr-4 flex-grow" min="0" required>
+                <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Search</button>
+            </form>
+            
+        </div>
+    </section>
+
+    <!-- Featured Listings -->
+    <section class="featured-listings container mx-auto px-4 my-8">
+        <h2 class="text-2xl font-bold mb-4">Featured Listings</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="listing bg-white p-4 rounded-lg shadow-md">
+                <img src="hotel1.jpg" alt="Hotel 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-semibold mb-2">Hotel One</h3>
+                <p>Amazing hotel with great amenities and service.</p>
+            </div>
+            <div class="listing bg-white p-4 rounded-lg shadow-md">
+                <img src="hotel2.jpg" alt="Hotel 2" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-semibold mb-2">Hotel Two</h3>
+                <p>Comfortable and luxurious stay in the heart of the city.</p>
+            </div>
+            <div class="listing bg-white p-4 rounded-lg shadow-md">
+                <img src="hotel3.jpg" alt="Hotel 3" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-semibold mb-2">Hotel Three</h3>
+                <p>Experience the best of both worlds with this hotel.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials container mx-auto px-4 my-8">
+        <h2 class="text-2xl font-bold mb-4">What Our Guests Say</h2>
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="testimonial mb-4">
+                <p class="italic">"Fantastic stay! The service was excellent and the location perfect."</p>
+                <cite class="block text-right font-bold">- Jane Doe</cite>
+            </div>
+            <div class="testimonial">
+                <p class="italic">"A wonderful experience from start to finish. Highly recommend!"</p>
+                <cite class="block text-right font-bold">- John Smith</cite>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./favicon-32x32.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Rooms - StayEZ</title>
+    <style>
+        .banner {
+            background-image: url('https://www.tripsavvy.com/thmb/qTRUo4Z1EChWFxO8FjpCz2Ka3SA=/1500x999/filters:fill(auto,1)/FSPM-room-interior-56a4c1193df78cf772842d50.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header>
+        <nav class="bg-white shadow-md">
+            <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center space-x-3">
+                        <img src="./logo.jpg" alt="Logo" class="h-10 w-10">
+                        <span class="font-bold text-gray-800 text-xl">StayEZ</span>
+                    </a>
+                </div>
+                <!-- Desktop Navbar -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="./home.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Home</a>
+                    <a href="./room.html" class="py-2 px-4 text-gray-600 border-b-4 border-blue-500 font-semibold">Rooms</a>
+                    <a href="./amenities.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Amenities</a>
+                    <a href="./book.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Booking</a>
+                    <a href="./contact.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Contact Us</a>
+                    <a href="./dashboard.html" class="py-2 px-4 text-gray-600 hover:text-blue-600 transition duration-300">Dashboard</a>
+                </div>
+                <!-- Auth Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="./login.html" class="py-2 px-4 font-medium text-white bg-blue-500 rounded hover:bg-blue-600 transition duration-300">Log Out</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuButton" class="md:hidden flex items-center p-2 text-gray-600 hover:text-blue-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu hidden md:hidden">
+            <ul class="flex flex-col space-y-2 p-4">
+                <li><a href="./home.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Home</a></li>
+                <li><a href="./room.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Rooms</a></li>
+                <li><a href="./amenities.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Amenities</a></li>
+                <li><a href="./book.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Booking</a></li>
+                <li><a href="./contact.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Contact Us</a></li>
+                <li><a href="./dashboard.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Dashboard</a></li>
+                <li><a href="./login.html" class="block text-gray-600 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">Log Out</a></li>
+            </ul>
+        </div>
+            <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            menuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+    </header>
+    <main class="flex-grow">
+        <section class="banner bg-blue-800 py-16">
+            <div class="banner-content text-white text-center px-4">
+                <h1 class="text-5xl font-bold mb-4">Welcome to StayEZ</h1>
+                <p class="text-xl">Book your perfect stay with us!</p>
+            </div>
+        </section>
+    </main>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 my-8">
+        <h1 class="text-3xl font-bold mb-4">Available Rooms</h1>
+        
+        <div id="room-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <!-- Rooms will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <script>
+        // Function to get query parameters
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                destination: params.get('destination'),
+                checkin: params.get('checkin'),
+                checkout: params.get('checkout'),
+                adults: params.get('adults'),
+                children: params.get('children')
+            };
+        }
+
+        // Dummy room data
+        const rooms = [
+            { id: 1, name: "Hotel One", price: "$100", description: "Comfortable room with great amenities.", available: true, type: "Single" },
+            { id: 2, name: "Hotel Two", price: "$150", description: "Luxurious room with a city view.", available: true, type: "Deluxe" },
+            { id: 3, name: "Hotel Three", price: "$200", description: "Premium room with exclusive features.", available: false, type: "Family" },
+            { id: 4, name: "Hotel Four", price: "$120", description: "Cozy room perfect for a relaxing stay.", available: true, type: "Single" },
+            { id: 5, name: "Hotel Five", price: "$180", description: "Spacious room with modern decor.", available: true, type: "Family" },
+        ];
+
+        // Function to display rooms based on query parameters
+        function displayRooms() {
+            const { destination, checkin, checkout, adults, children } = getQueryParams();
+            const roomList = document.getElementById('room-list');
+
+            // Clear previous results
+            roomList.innerHTML = '';
+
+            // Filter and display rooms based on availability
+            rooms.forEach(room => {
+                if (room.available) {
+                    roomList.innerHTML += `
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-2">${room.name}</h3>
+                            <p>Price: ${room.price}</p>
+                            <p>Type: ${room.type}</p>
+                            <p>${room.description}</p>
+                            <a href="book.html?roomId=${room.id}&destination=${destination}&checkin=${checkin}&checkout=${checkout}&adults=${adults}&children=${children}" class="mt-2 inline-block bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Book Now</a>
+                        </div>
+                    `;
+                }
+            });
+
+            if (roomList.innerHTML === '') {
+                roomList.innerHTML = '<p>No rooms available based on your search criteria.</p>';
+            }
+        }
+
+        // Display rooms on page load
+        document.addEventListener('DOMContentLoaded', displayRooms);
+    </script>
+    
+</body>
+</html>
+
+
+
+
+   

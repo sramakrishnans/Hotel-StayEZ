@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>StayEZ - Welcome</title>
+
+    <style>
+        .gradient-bg {
+            background:whitesmoke;
+        }
+        .logo {
+            filter: drop-shadow(2px 4px 6px black); /* Adding shadow to ensure visibility */
+        }
+    </style>
+</head>
+<body class="gradient-bg flex items-center justify-center min-h-screen text-white">
+
+    <div class="text-center p-4">
+        <!-- Logo and Name -->
+        <div class="mb-8">
+            <!-- Ensure the logo image is a PNG with a transparent background -->
+            <img src="./logo-removebg-preview.png" alt="StayEZ Logo" class="logo mx-auto w-32 h-32">
+            <h1 class="text-6xl font-bold mt-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-orange-500 to-red-600">StayEZ</h1>
+        </div>
+
+        <!-- Login Option -->
+        <div>
+            <a href="login.html" class="bg-gradient-to-r from-teal-500 to-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:from-teal-600 hover:to-blue-700 transition duration-300">Login</a>
+        </div>
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBoDx7Lcc5Jk_cN_LARkO4jDB5SQTaY0Ug",
+          authDomain: "stayez-hotel-booking-7265d.firebaseapp.com",
+          projectId: "stayez-hotel-booking-7265d",
+          storageBucket: "stayez-hotel-booking-7265d.appspot.com",
+          messagingSenderId: "380897309434",
+          appId: "1:380897309434:web:aa6ab28dfe4e1d9df44f43"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      </script>
+</body>
+</html>
