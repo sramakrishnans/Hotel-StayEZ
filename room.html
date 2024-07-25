@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./favicon-32x32.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <title>Rooms - StayEZ</title>
     <style>
         .banner {
@@ -23,6 +24,13 @@
             border-radius: 8px;
         }
     </style>
+        <script>
+            function selectRoom(roomType) {
+                localStorage.setItem('selectedRoom', roomType);
+                window.location.href = 'book.html';
+            }
+        </script>
+    
 </head>
 <body class="bg-gray-100">
     <header>
@@ -80,81 +88,102 @@
         });
     </script>
     </header>
-    <main class="flex-grow">
+    </main>
+  <main class="flex-grow">
         <section class="banner bg-blue-800 py-16">
             <div class="banner-content text-white text-center px-4">
                 <h1 class="text-5xl font-bold mb-4">Welcome to StayEZ</h1>
                 <p class="text-xl">Book your perfect stay with us!</p>
             </div>
         </section>
+        <section class="my-8">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-center text-blue-800">Top Hotels in Chennai</h2>
+                <div id="hotelsList" class="space-y-8">
+                    <!-- Hotels will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
     </main>
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 my-8">
-        <h1 class="text-3xl font-bold mb-4">Available Rooms</h1>
-        
-        <div id="room-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <!-- Rooms will be dynamically inserted here -->
-        </div>
-    </main>
-
-    <script>
-        // Function to get query parameters
-        function getQueryParams() {
-            const params = new URLSearchParams(window.location.search);
-            return {
-                destination: params.get('destination'),
-                checkin: params.get('checkin'),
-                checkout: params.get('checkout'),
-                adults: params.get('adults'),
-                children: params.get('children')
-            };
-        }
-
-        // Dummy room data
-        const rooms = [
-            { id: 1, name: "Hotel One", price: "$100", description: "Comfortable room with great amenities.", available: true, type: "Single" },
-            { id: 2, name: "Hotel Two", price: "$150", description: "Luxurious room with a city view.", available: true, type: "Deluxe" },
-            { id: 3, name: "Hotel Three", price: "$200", description: "Premium room with exclusive features.", available: false, type: "Family" },
-            { id: 4, name: "Hotel Four", price: "$120", description: "Cozy room perfect for a relaxing stay.", available: true, type: "Single" },
-            { id: 5, name: "Hotel Five", price: "$180", description: "Spacious room with modern decor.", available: true, type: "Family" },
-        ];
-
-        // Function to display rooms based on query parameters
-        function displayRooms() {
-            const { destination, checkin, checkout, adults, children } = getQueryParams();
-            const roomList = document.getElementById('room-list');
-
-            // Clear previous results
-            roomList.innerHTML = '';
-
-            // Filter and display rooms based on availability
-            rooms.forEach(room => {
-                if (room.available) {
-                    roomList.innerHTML += `
-                        <div class="bg-white p-4 rounded-lg shadow-md">
-                            <h3 class="text-xl font-semibold mb-2">${room.name}</h3>
-                            <p>Price: ${room.price}</p>
-                            <p>Type: ${room.type}</p>
-                            <p>${room.description}</p>
-                            <a href="book.html?roomId=${room.id}&destination=${destination}&checkin=${checkin}&checkout=${checkout}&adults=${adults}&children=${children}" class="mt-2 inline-block bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Book Now</a>
-                        </div>
-                    `;
-                }
-            });
-
-            if (roomList.innerHTML === '') {
-                roomList.innerHTML = '<p>No rooms available based on your search criteria.</p>';
-            }
-        }
-
-        // Display rooms on page load
-        document.addEventListener('DOMContentLoaded', displayRooms);
-    </script>
     
+    <script>
+        // Sample data for hotels
+        const hotels = [
+            {
+                name: 'Hotel A',
+                rooms: [
+                    { type: 'Deluxe Room', amenities: 'Free WiFi, Air Conditioning, Breakfast', price: 150 },
+                    { type: 'Suite', amenities: 'Free WiFi, Air Conditioning, Breakfast, Mini Bar', price: 300 }
+                ]
+            },
+            {
+                name: 'Hotel B',
+                rooms: [
+                    { type: 'Standard Room', amenities: 'Free WiFi, Air Conditioning', price: 100 },
+                    { type: 'Executive Room', amenities: 'Free WiFi, Air Conditioning, Breakfast, Gym Access', price: 200 }
+                ]
+            }
+        ];
+    
+        function selectRoom(hotelName, roomType, checkinDate, checkoutDate, adults, children, price) {
+            // Save booking details in local storage
+            const booking = {
+                hotelName,
+                roomType,
+                checkinDate,
+                checkoutDate,
+                adults,
+                children,
+                price
+            };
+            localStorage.setItem('selectedBooking', JSON.stringify(booking));
+            // Redirect to book.html
+            window.location.href = 'book.html';
+        }
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const hotelsList = document.getElementById('hotelsList');
+    
+            hotels.forEach(hotel => {
+                const hotelDiv = document.createElement('div');
+                hotelDiv.classList.add('bg-white', 'p-6', 'rounded-lg', 'shadow-lg');
+                hotelDiv.innerHTML = `
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">${hotel.name}</h3>
+                    <div class="space-y-4">
+                        ${hotel.rooms.map(room => `
+                            <div class="border p-4 rounded-lg">
+                                <h4 class="text-xl font-semibold text-blue-500">${room.type}</h4>
+                                <p class="text-gray-600">${room.amenities}</p>
+                                <p class="text-lg font-bold text-blue-700">Price: $${room.price}</p>
+                                <div class="mt-4">
+                                    <label for="checkinDate-${room.type}-${hotel.name}" class="block">Check-in Date:</label>
+                                    <input type="date" id="checkinDate-${room.type}-${hotel.name}" class="border rounded p-2 w-full">
+                                    <label for="checkoutDate-${room.type}-${hotel.name}" class="block mt-2">Check-out Date:</label>
+                                    <input type="date" id="checkoutDate-${room.type}-${hotel.name}" class="border rounded p-2 w-full">
+                                    <label for="adults-${room.type}-${hotel.name}" class="block mt-2">Adults:</label>
+                                    <input type="number" id="adults-${room.type}-${hotel.name}" class="border rounded p-2 w-full" min="1" value="1">
+                                    <label for="children-${room.type}-${hotel.name}" class="block mt-2">Children:</label>
+                                    <input type="number" id="children-${room.type}-${hotel.name}" class="border rounded p-2 w-full" min="0" value="0">
+                                </div>
+                                <button onclick="selectRoom(
+                                    '${hotel.name}', 
+                                    '${room.type}', 
+                                    document.getElementById('checkinDate-${room.type}-${hotel.name}').value,
+                                    document.getElementById('checkoutDate-${room.type}-${hotel.name}').value,
+                                    document.getElementById('adults-${room.type}-${hotel.name}').value,
+                                    document.getElementById('children-${room.type}-${hotel.name}').value,
+                                    ${room.price}
+                                )" class="bg-blue-600 text-white py-2 px-4 rounded-lg mt-4 hover:bg-blue-700 flex items-center justify-center">
+                                    <i class="fas fa-bed mr-2"></i> Book Now
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                hotelsList.appendChild(hotelDiv);
+            });
+        });
+    </script>
 </body>
-</html>
-
-
-
-
-   
+</html>    
+ 

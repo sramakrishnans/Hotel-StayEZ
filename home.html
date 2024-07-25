@@ -102,7 +102,7 @@
     </section>
 
     <!-- Search Form -->
-    <section class="search my-8">
+    <!--<section class="search my-8">
         <div class="container  mx-auto px-4">
             <form action="room.html" method="get" class="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center">
                 <input type="text" name="destination" placeholder="Destination" class="border border-gray-300 rounded-lg p-2 mb-4 md:mb-0 md:mr-4 flex-grow" required>
@@ -115,6 +115,10 @@
             
         </div>
     </section>
+-->
+
+   
+
 
     <!-- Featured Listings -->
     <section class="featured-listings container mx-auto px-4 my-8">
@@ -153,5 +157,103 @@
         </div>
     </section>
 </main>
+
+
 </body>
 </html>
+
+
+
+ <!-- Search Form -->
+    <!--<section class="my-8">
+        <div class="container mx-auto px-4">
+            <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg mx-auto">
+                <h2 class="text-2xl font-bold mb-6 text-center">Hotel Booking</h2>
+                <form onsubmit="handleSearch(event)">
+                    <div class="mb-4">
+                        <label for="checkin" class="block mb-2 font-semibold">Check-in Date</label>
+                        <input type="date" id="checkin" name="checkin" class="border p-2 rounded w-full" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="checkout" class="block mb-2 font-semibold">Check-out Date</label>
+                        <input type="date" id="checkout" name="checkout" class="border p-2 rounded w-full" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="rooms" class="block mb-2 font-semibold">Rooms</label>
+                        <input type="number" id="rooms" name="rooms" class="border p-2 rounded w-full" onchange="updateRooms()" min="1" required>
+                    </div>
+                    <div id="roomDetails"></div>
+                    <div class="mt-6">
+                        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 w-full">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>-->  
+
+
+    <!--<script>
+    function updateRooms() {
+        const rooms = document.getElementById('rooms').value;
+        const roomDetails = document.getElementById('roomDetails');
+        roomDetails.innerHTML = '';
+
+        for (let i = 1; i <= rooms; i++) {
+            const roomDiv = document.createElement('div');
+            roomDiv.classList.add('mb-4', 'p-4', 'bg-gray-100', 'rounded-lg');
+
+            const roomTitle = document.createElement('h3');
+            roomTitle.classList.add('font-semibold', 'mb-2', 'text-lg');
+            roomTitle.textContent = `Room ${i}`;
+            roomDiv.appendChild(roomTitle);
+
+            const adultsLabel = document.createElement('label');
+            adultsLabel.classList.add('block', 'mb-2');
+            adultsLabel.textContent = `Adults: `;
+            const adultsInput = document.createElement('input');
+            adultsInput.type = 'number';
+            adultsInput.name = `room${i}Adults`;
+            adultsInput.min = '1';  // Minimum value for adults
+            adultsInput.max = '30'; // Maximum value for adults
+            adultsInput.classList.add('border', 'p-2', 'rounded', 'w-full', 'mb-4', 'mt-1');
+            adultsLabel.appendChild(adultsInput);
+
+            const childrenLabel = document.createElement('label');
+            childrenLabel.classList.add('block', 'mb-2');
+            childrenLabel.textContent = `Children: `;
+            const childrenInput = document.createElement('input');
+            childrenInput.type = 'number';
+            childrenInput.name = `room${i}Children`;
+            childrenInput.min = '0';  // Minimum value for children
+            childrenInput.max = '10'; // Maximum value for children
+            childrenInput.classList.add('border', 'p-2', 'rounded', 'w-full', 'mt-1');
+            childrenLabel.appendChild(childrenInput);
+
+            roomDiv.appendChild(adultsLabel);
+            roomDiv.appendChild(childrenLabel);
+
+            roomDetails.appendChild(roomDiv);
+        }
+    }
+
+    function handleSearch(event) {
+        event.preventDefault();
+
+        const checkin = document.getElementById('checkin').value;
+        const checkout = document.getElementById('checkout').value;
+        const rooms = document.getElementById('rooms').value;
+        const roomDetails = [];
+
+        for (let i = 1; i <= rooms; i++) {
+            const adults = document.querySelector(`input[name='room${i}Adults']`).value;
+            const children = document.querySelector(`input[name='room${i}Children']`).value;
+            roomDetails.push({ room: i, adults, children });
+        }
+
+        localStorage.setItem('checkin', checkin);
+        localStorage.setItem('checkout', checkout);
+        localStorage.setItem('rooms', JSON.stringify(roomDetails));
+
+        window.location.href = 'room.html';
+    }
+</script>-->
